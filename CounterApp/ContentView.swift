@@ -1,24 +1,33 @@
-//
-//  ContentView.swift
-//  CounterApp
-//
-//  Created by Toto Hyojun Tak on 1/8/25.
-//
-
 import SwiftUI
 
 struct ContentView: View {
+    @State private var counter = 0
+
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        VStack(spacing: 20) {
+            Text("Counter: \(counter)")
+                .font(.largeTitle)
+            HStack {
+                Button("Increment") {
+                    counter += 1
+                }
+                .padding()
+                Button("Decrement") {
+                    counter -= 1
+                }
+                .padding()
+                Button("Initial") {
+                    counter = 0
+                }
+                .padding()
+            }
         }
         .padding()
     }
 }
 
-#Preview {
-    ContentView()
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
 }
