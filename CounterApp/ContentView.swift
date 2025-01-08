@@ -5,7 +5,10 @@ struct ContentView: View {
 
     var body: some View {
         VStack(spacing: 20) {
-            Text("Counter: \(counter)")
+            Text("Counter")
+                .font(.largeTitle)
+                .accessibility(identifier: "Label")
+            Text("\(counter)")
                 .font(.largeTitle)
                 .accessibility(identifier: "CounterLabel")
             HStack {

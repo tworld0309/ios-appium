@@ -1,0 +1,56 @@
+[
+  {
+    "testName": "Increment Button Test",
+    "status": "passed",
+    "startTime": "2025-01-08T23:21:50.729Z",
+    "endTime": "2025-01-08T23:21:57.387Z",
+    "steps": [
+      "App launched successfully",
+      "Actual: 1, Expected: 1"
+    ],
+    "error": null
+  },
+  {
+    "testName": "Decrement Button Test",
+    "status": "passed",
+    "startTime": "2025-01-08T23:21:57.387Z",
+    "endTime": "2025-01-08T23:22:03.561Z",
+    "steps": [
+      "App launched successfully",
+      "Actual: -1, Expected: -1"
+    ],
+    "error": null
+  },
+  {
+    "testName": "Initial Button Test",
+    "status": "passed",
+    "startTime": "2025-01-08T23:22:03.561Z",
+    "endTime": "2025-01-08T23:22:09.843Z",
+    "steps": [
+      "App launched successfully",
+      "Actual: 0, Expected: 0"
+    ],
+    "error": null
+  },
+  {
+    "testName": "failed Button Test 1 (incrementButton)",
+    "status": "failed",
+    "startTime": "2025-01-08T23:22:09.843Z",
+    "endTime": "2025-01-08T23:22:16.170Z",
+    "steps": [
+      "App launched successfully",
+      "Actual: -1, Expected: 1"
+    ],
+    "error": "Expected '1' but got '-1'"
+  },
+  {
+    "testName": "Failing Test Case 1",
+    "status": "failed",
+    "startTime": "2025-01-08T23:22:16.170Z",
+    "endTime": "2025-01-08T23:22:25.875Z",
+    "steps": [
+      "App launched successfully"
+    ],
+    "error": "Can't call click on element with selector \"~NonExistent\" because element wasn't found"
+  }
+]
