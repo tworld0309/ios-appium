@@ -16,7 +16,7 @@ let driver;
   });
 
   // Counter 초기 상태 확인
-  const counterLabel = await driver.$('~Counter: 0');
+  const counterLabel = await driver.$('~CounterLabel');
   console.log(await counterLabel.getText()); // "Counter: 0"
 
   // Increment 버튼 클릭
