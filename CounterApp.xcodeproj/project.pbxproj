@@ -6,6 +6,11 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		4BF02AC02D2E7CB500D4DE31 /* appium-test.js in Resources */ = {isa = PBXBuildFile; fileRef = 4BF02ABF2D2E7CAE00D4DE31 /* appium-test.js */; };
+		4BF02AC32D2E809700D4DE31 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 4BF02AC22D2E809200D4DE31 /* README.md */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		4BF02AA32D2E78ED00D4DE31 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -27,6 +32,8 @@
 		4BF02A922D2E78EB00D4DE31 /* CounterApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CounterApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BF02AA22D2E78ED00D4DE31 /* CounterAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CounterAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BF02AAC2D2E78ED00D4DE31 /* CounterAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CounterAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4BF02ABF2D2E7CAE00D4DE31 /* appium-test.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = "appium-test.js"; sourceTree = "<group>"; };
+		4BF02AC22D2E809200D4DE31 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -75,6 +82,8 @@
 		4BF02A892D2E78EB00D4DE31 = {
 			isa = PBXGroup;
 			children = (
+				4BF02AC22D2E809200D4DE31 /* README.md */,
+				4BF02ABF2D2E7CAE00D4DE31 /* appium-test.js */,
 				4BF02A942D2E78EB00D4DE31 /* CounterApp */,
 				4BF02AA52D2E78ED00D4DE31 /* CounterAppTests */,
 				4BF02AAF2D2E78ED00D4DE31 /* CounterAppUITests */,
@@ -212,6 +221,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4BF02AC02D2E7CB500D4DE31 /* appium-test.js in Resources */,
+				4BF02AC32D2E809700D4DE31 /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

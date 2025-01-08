@@ -7,18 +7,22 @@ struct ContentView: View {
         VStack(spacing: 20) {
             Text("Counter: \(counter)")
                 .font(.largeTitle)
+                .accessibility(identifier: "CounterLabel")
             HStack {
                 Button("Increment") {
                     counter += 1
                 }
+                .accessibility(identifier: "Increment")
                 .padding()
                 Button("Decrement") {
                     counter -= 1
                 }
+                .accessibility(identifier: "Decrement")
                 .padding()
                 Button("Initial") {
                     counter = 0
                 }
+                .accessibility(identifier: "Initial")
                 .padding()
             }
         }
