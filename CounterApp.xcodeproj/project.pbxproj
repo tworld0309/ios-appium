@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4BF02AC02D2E7CB500D4DE31 /* appium-test.js in Resources */ = {isa = PBXBuildFile; fileRef = 4BF02ABF2D2E7CAE00D4DE31 /* appium-test.js */; };
 		4BF02AC32D2E809700D4DE31 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 4BF02AC22D2E809200D4DE31 /* README.md */; };
+		4BF02AC52D2E83CD00D4DE31 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 4BF02AC42D2E83C900D4DE31 /* .gitignore */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +35,7 @@
 		4BF02AAC2D2E78ED00D4DE31 /* CounterAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CounterAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BF02ABF2D2E7CAE00D4DE31 /* appium-test.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = "appium-test.js"; sourceTree = "<group>"; };
 		4BF02AC22D2E809200D4DE31 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		4BF02AC42D2E83C900D4DE31 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -82,6 +84,7 @@
 		4BF02A892D2E78EB00D4DE31 = {
 			isa = PBXGroup;
 			children = (
+				4BF02AC42D2E83C900D4DE31 /* .gitignore */,
 				4BF02AC22D2E809200D4DE31 /* README.md */,
 				4BF02ABF2D2E7CAE00D4DE31 /* appium-test.js */,
 				4BF02A942D2E78EB00D4DE31 /* CounterApp */,
@@ -221,6 +224,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4BF02AC52D2E83CD00D4DE31 /* .gitignore in Resources */,
 				4BF02AC02D2E7CB500D4DE31 /* appium-test.js in Resources */,
 				4BF02AC32D2E809700D4DE31 /* README.md in Resources */,
 			);
