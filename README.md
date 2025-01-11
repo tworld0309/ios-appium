@@ -2,7 +2,7 @@
 // README.md
 // CounterApp
 //
-// Created by Toto Hyojun Tak on 1/8/25.
+// Created by Toto on 1/8/25.
 //
 
 # Local 환경에서 iOS(SwiftUI) - Appium 실행하기
