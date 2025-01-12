@@ -76,7 +76,7 @@ const fs = require("fs");
           "appium:platformVersion": "18.2", // iOS 버전
           "appium:deviceName": "iPhone 16 Pro", // 시뮬레이터 이름
           "appium:app":
-            "/Users/totohyojuntak/Library/Developer/Xcode/DerivedData/CounterApp-fqmaeslnbhwyflgnlmccxezzwapo/Build/Products/Debug-iphonesimulator/CounterApp.app", // .app 파일 경로
+            "/Users/hyojuntak/Library/Developer/Xcode/DerivedData/CounterApp-fnpulawmnvnbcoexorwmeuzodckc/Build/Products/Debug-iphonesimulator/CounterApp.app", // .app 파일 경로
           "appium:automationName": "XCUITest",
         },
       });
