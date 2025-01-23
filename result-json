@@ -1,56 +1,42 @@
 [
   {
     "testName": "Increment Button Test",
-    "status": "passed",
-    "startTime": "2025-01-12T05:56:47.667Z",
-    "endTime": "2025-01-12T05:57:44.586Z",
-    "steps": [
-      "App launched successfully",
-      "Actual: 1, Expected: 1"
-    ],
-    "error": null
+    "status": "failed",
+    "startTime": "2025-01-23T08:47:29.493Z",
+    "endTime": "2025-01-23T08:47:34.603Z",
+    "steps": [],
+    "error": "Failed to create session.\nWebDriverError: An unknown server-side error occurred while processing the command. Original error: The application at '/Users/hyojuntak/Library/Developer/Xcode/DerivedData/CounterApp-fnpulawmnvnbcoexorwmeuzodckc/Build/Products/Debug-iphonesimulator/CounterApp.app' does not exist or is not accessible when running \"http://localhost:4723/session\" with method \"POST\" and args \"{\"capabilities\":{\"alwaysMatch\":{\"platformName\":\"iOS\",\"appium:platformVersion\":\"18.2\",\"appium:deviceName\":\"iPhone 16 Pro\",\"appium:app\":\"/Users/hyojuntak/Library/Developer/Xcode/DerivedData/CounterApp-fnpulawmnvnbcoexorwmeuzodckc/Build/Products/Debug-iphonesimulator/CounterApp.app\",\"appium:automationName\":\"XCUITest\"},\"firstMatch\":[{}]}}\""
   },
   {
     "testName": "Decrement Button Test",
-    "status": "passed",
-    "startTime": "2025-01-12T05:57:44.586Z",
-    "endTime": "2025-01-12T05:57:51.860Z",
-    "steps": [
-      "App launched successfully",
-      "Actual: -1, Expected: -1"
-    ],
-    "error": null
+    "status": "failed",
+    "startTime": "2025-01-23T08:47:34.603Z",
+    "endTime": "2025-01-23T08:47:37.233Z",
+    "steps": [],
+    "error": "Failed to create session.\nWebDriverError: An unknown server-side error occurred while processing the command. Original error: The application at '/Users/hyojuntak/Library/Developer/Xcode/DerivedData/CounterApp-fnpulawmnvnbcoexorwmeuzodckc/Build/Products/Debug-iphonesimulator/CounterApp.app' does not exist or is not accessible when running \"http://localhost:4723/session\" with method \"POST\" and args \"{\"capabilities\":{\"alwaysMatch\":{\"platformName\":\"iOS\",\"appium:platformVersion\":\"18.2\",\"appium:deviceName\":\"iPhone 16 Pro\",\"appium:app\":\"/Users/hyojuntak/Library/Developer/Xcode/DerivedData/CounterApp-fnpulawmnvnbcoexorwmeuzodckc/Build/Products/Debug-iphonesimulator/CounterApp.app\",\"appium:automationName\":\"XCUITest\"},\"firstMatch\":[{}]}}\""
   },
   {
     "testName": "Initial Button Test",
-    "status": "passed",
-    "startTime": "2025-01-12T05:57:51.860Z",
-    "endTime": "2025-01-12T05:57:58.953Z",
-    "steps": [
-      "App launched successfully",
-      "Actual: 0, Expected: 0"
-    ],
-    "error": null
+    "status": "failed",
+    "startTime": "2025-01-23T08:47:37.233Z",
+    "endTime": "2025-01-23T08:47:39.801Z",
+    "steps": [],
+    "error": "Failed to create session.\nWebDriverError: An unknown server-side error occurred while processing the command. Original error: The application at '/Users/hyojuntak/Library/Developer/Xcode/DerivedData/CounterApp-fnpulawmnvnbcoexorwmeuzodckc/Build/Products/Debug-iphonesimulator/CounterApp.app' does not exist or is not accessible when running \"http://localhost:4723/session\" with method \"POST\" and args \"{\"capabilities\":{\"alwaysMatch\":{\"platformName\":\"iOS\",\"appium:platformVersion\":\"18.2\",\"appium:deviceName\":\"iPhone 16 Pro\",\"appium:app\":\"/Users/hyojuntak/Library/Developer/Xcode/DerivedData/CounterApp-fnpulawmnvnbcoexorwmeuzodckc/Build/Products/Debug-iphonesimulator/CounterApp.app\",\"appium:automationName\":\"XCUITest\"},\"firstMatch\":[{}]}}\""
   },
   {
     "testName": "failed Button Test 1 (incrementButton)",
     "status": "failed",
-    "startTime": "2025-01-12T05:57:58.953Z",
-    "endTime": "2025-01-12T05:58:06.150Z",
-    "steps": [
-      "App launched successfully",
-      "Actual: -1, Expected: 1"
-    ],
-    "error": "Expected '1' but got '-1'"
+    "startTime": "2025-01-23T08:47:39.802Z",
+    "endTime": "2025-01-23T08:47:42.384Z",
+    "steps": [],
+    "error": "Failed to create session.\nWebDriverError: An unknown server-side error occurred while processing the command. Original error: The application at '/Users/hyojuntak/Library/Developer/Xcode/DerivedData/CounterApp-fnpulawmnvnbcoexorwmeuzodckc/Build/Products/Debug-iphonesimulator/CounterApp.app' does not exist or is not accessible when running \"http://localhost:4723/session\" with method \"POST\" and args \"{\"capabilities\":{\"alwaysMatch\":{\"platformName\":\"iOS\",\"appium:platformVersion\":\"18.2\",\"appium:deviceName\":\"iPhone 16 Pro\",\"appium:app\":\"/Users/hyojuntak/Library/Developer/Xcode/DerivedData/CounterApp-fnpulawmnvnbcoexorwmeuzodckc/Build/Products/Debug-iphonesimulator/CounterApp.app\",\"appium:automationName\":\"XCUITest\"},\"firstMatch\":[{}]}}\""
   },
   {
     "testName": "Failing Test Case 1",
     "status": "failed",
-    "startTime": "2025-01-12T05:58:06.150Z",
-    "endTime": "2025-01-12T05:58:16.867Z",
-    "steps": [
-      "App launched successfully"
-    ],
-    "error": "Can't call click on element with selector \"~NonExistent\" because element wasn't found"
+    "startTime": "2025-01-23T08:47:42.384Z",
+    "endTime": "2025-01-23T08:47:45.102Z",
+    "steps": [],
+    "error": "Failed to create session.\nWebDriverError: An unknown server-side error occurred while processing the command. Original error: The application at '/Users/hyojuntak/Library/Developer/Xcode/DerivedData/CounterApp-fnpulawmnvnbcoexorwmeuzodckc/Build/Products/Debug-iphonesimulator/CounterApp.app' does not exist or is not accessible when running \"http://localhost:4723/session\" with method \"POST\" and args \"{\"capabilities\":{\"alwaysMatch\":{\"platformName\":\"iOS\",\"appium:platformVersion\":\"18.2\",\"appium:deviceName\":\"iPhone 16 Pro\",\"appium:app\":\"/Users/hyojuntak/Library/Developer/Xcode/DerivedData/CounterApp-fnpulawmnvnbcoexorwmeuzodckc/Build/Products/Debug-iphonesimulator/CounterApp.app\",\"appium:automationName\":\"XCUITest\"},\"firstMatch\":[{}]}}\""
   }
 ]
