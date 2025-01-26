@@ -13,6 +13,7 @@ brew install node
 npm install -g appium
 npm install -g appium-doctor
 npm install -g appium-xcuitest-driver
+npm install dotenv
 
 # Xcode Command Line Tools 확인
 echo "🔹 Xcode Command Line Tools 확인"

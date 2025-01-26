@@ -2,6 +2,7 @@
   "dependencies": {
     "@wdio/appium-service": "^9.6.1",
     "@wdio/mocha-framework": "^9.5.0",
+    "dotenv": "^16.4.7",
     "webdriverio": "^9.6.1"
   }
 }
