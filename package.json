@@ -1,7 +1,7 @@
 {
   "dependencies": {
-    "@wdio/appium-service": "^9.5.4",
+    "@wdio/appium-service": "^9.6.1",
     "@wdio/mocha-framework": "^9.5.0",
-    "webdriverio": "^9.5.4"
+    "webdriverio": "^9.6.1"
   }
 }

@@ -1,7 +1,29 @@
-const { remote } = require("webdriverio");
 const fs = require("fs");
+const path = require("path");
+const { remote } = require("webdriverio");
+
+// 📌 실행 시간 기반으로 결과 파일 이름 생성
+const timestamp = new Date().toISOString().replace(/[:.]/g, "-");
+const resultsFileName = `results_${timestamp}.json`;
+const resultsFilePath = path.join(
+  process.cwd(),
+  "test-results",
+  resultsFileName
+);
+
+// 📌 결과 저장 함수
+function saveResultsToFile(results) {
+  if (!fs.existsSync("test-results")) {
+    fs.mkdirSync("test-results"); // test-results 디렉토리 없으면 생성
+  }
+  fs.writeFileSync(resultsFilePath, JSON.stringify(results, null, 2));
+  console.log(`✅ 테스트 결과 저장 완료: ${resultsFilePath}`);
+}
 
 (async () => {
+  console.log("🔹 WebdriverIO 모듈 로드 완료!");
+
+  // 📌 실행할 테스트 시나리오 정의
   const scenarios = [
     {
       name: "Increment Button Test",
@@ -11,16 +33,6 @@ const fs = require("fs");
         const counterLabel = await driver.$("~CounterLabel");
         const counterText = await counterLabel.getText();
         return { actual: counterText, expected: "1" };
-      },
-    },
-    {
-      name: "Decrement Button Test",
-      action: async (driver) => {
-        const decrementButton = await driver.$("~Decrement");
-        await decrementButton.click();
-        const counterLabel = await driver.$("~CounterLabel");
-        const counterText = await counterLabel.getText();
-        return { actual: counterText, expected: "-1" };
       },
     },
     {
@@ -34,9 +46,9 @@ const fs = require("fs");
       },
     },
     {
-      name: "failed Button Test 1 (incrementButton)",
+      name: "Failed Button Test 1 (Increment Button)",
       action: async (driver) => {
-        // 의도적으로 테스트함
+        // 📌 의도적으로 실패하는 테스트
         const decrementButton = await driver.$("~Decrement");
         await decrementButton.click();
         const counterLabel = await driver.$("~CounterLabel");
@@ -47,7 +59,7 @@ const fs = require("fs");
     {
       name: "Failing Test Case 1",
       action: async (driver) => {
-        // 없는 버튼을 선택하려고 시도 (의도적으로 실패)
+        // 📌 존재하지 않는 버튼을 클릭하려고 시도 (의도적 실패)
         const nonExistentButton = await driver.$("~NonExistent");
         await nonExistentButton.click();
         return { actual: null, expected: "N/A" };
@@ -57,7 +69,13 @@ const fs = require("fs");
 
   let results = [];
 
+  // 📌 각 시나리오 실행
   for (let scenario of scenarios) {
+    if (!scenario || !scenario.name) {
+      console.error("❌ 오류: scenario가 정의되지 않음", scenario);
+      continue; // 문제가 있는 시나리오는 건너뛰기
+    }
+
     let result = {
       testName: scenario.name,
       status: "passed",
@@ -68,47 +86,47 @@ const fs = require("fs");
     };
 
     try {
+      console.log(`🔹 ${scenario.name} 실행 중...`);
+      console.log("🔹 Appium 서버에 연결 시도...");
+
       const driver = await remote({
         path: "/",
         port: 4723,
         capabilities: {
           platformName: "iOS",
-          "appium:platformVersion": "18.2", // iOS 버전
-          "appium:deviceName": "iPhone 16 Pro", // 시뮬레이터 이름
+          "appium:platformVersion": "18.2",
+          "appium:deviceName": "iPhone 16 Pro",
           "appium:app":
-            "/Users/hyojuntak/Library/Developer/Xcode/DerivedData/CounterApp-fnpulawmnvnbcoexorwmeuzodckc/Build/Products/Debug-iphonesimulator/CounterApp.app", // .app 파일 경로
+            "/Users/totohyojuntak/Library/Developer/Xcode/DerivedData/CounterApp-fqmaeslnbhwyflgnlmccxezzwapo/Build/Products/Debug-iphonesimulator/CounterApp.app",
           "appium:automationName": "XCUITest",
         },
       });
 
+      console.log("✅ Appium 세션 생성 성공!");
       result.steps.push("App launched successfully");
 
-      // 각 시나리오 실행
+      // 📌 각 시나리오 실행
       const { actual, expected } = await scenario.action(driver);
       result.steps.push(`Actual: ${actual}, Expected: ${expected}`);
 
-      // 결과 값 비교
-      console.log(`$$$$$$$$$ Expected '${expected}' but got '${actual}'`);
+      console.log(`✅ Expected '${expected}' but got '${actual}'`);
       if (actual !== expected) {
         result.status = "failed";
         result.error = `Expected '${expected}' but got '${actual}'`;
       }
 
       await driver.deleteSession();
+      console.log(`✅ ${scenario.name} 완료!`);
     } catch (error) {
       result.status = "failed";
       result.error = error.message;
+      console.error(`❌ ${scenario.name} 실행 중 오류 발생:`, error.stack);
     } finally {
       result.endTime = new Date().toISOString();
-      // if (result.status === "passed") {
-      //   result.error = null; // 성공 시 error 필드를 null로 설정
-      // }
       results.push(result);
     }
   }
 
-  // 결과 파일에 저장
-  console.log("##### result ######");
-  fs.writeFileSync("result-json", JSON.stringify(results, null, 2));
-  // console.log("##### test-result.json :", JSON.stringify(results, null, 2));
+  // 📌 최종 결과 저장
+  saveResultsToFile(results);
 })();

@@ -2,8 +2,8 @@
   {
     "testName": "Increment Button Test",
     "status": "passed",
-    "startTime": "2025-01-12T05:56:47.667Z",
-    "endTime": "2025-01-12T05:57:44.586Z",
+    "startTime": "2025-01-25T07:15:34.914Z",
+    "endTime": "2025-01-25T07:15:41.303Z",
     "steps": [
       "App launched successfully",
       "Actual: 1, Expected: 1"
@@ -11,21 +11,10 @@
     "error": null
   },
   {
-    "testName": "Decrement Button Test",
-    "status": "passed",
-    "startTime": "2025-01-12T05:57:44.586Z",
-    "endTime": "2025-01-12T05:57:51.860Z",
-    "steps": [
-      "App launched successfully",
-      "Actual: -1, Expected: -1"
-    ],
-    "error": null
-  },
-  {
     "testName": "Initial Button Test",
     "status": "passed",
-    "startTime": "2025-01-12T05:57:51.860Z",
-    "endTime": "2025-01-12T05:57:58.953Z",
+    "startTime": "2025-01-25T07:15:41.303Z",
+    "endTime": "2025-01-25T07:15:47.468Z",
     "steps": [
       "App launched successfully",
       "Actual: 0, Expected: 0"
@@ -33,10 +22,10 @@
     "error": null
   },
   {
-    "testName": "failed Button Test 1 (incrementButton)",
+    "testName": "Failed Button Test 1 (Increment Button)",
     "status": "failed",
-    "startTime": "2025-01-12T05:57:58.953Z",
-    "endTime": "2025-01-12T05:58:06.150Z",
+    "startTime": "2025-01-25T07:15:47.468Z",
+    "endTime": "2025-01-25T07:15:53.602Z",
     "steps": [
       "App launched successfully",
       "Actual: -1, Expected: 1"
@@ -46,8 +35,8 @@
   {
     "testName": "Failing Test Case 1",
     "status": "failed",
-    "startTime": "2025-01-12T05:58:06.150Z",
-    "endTime": "2025-01-12T05:58:16.867Z",
+    "startTime": "2025-01-25T07:15:53.602Z",
+    "endTime": "2025-01-25T07:16:03.393Z",
     "steps": [
       "App launched successfully"
     ],
