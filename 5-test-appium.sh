@@ -6,4 +6,5 @@ source "$NVM_DIR/nvm.sh"
 nvm use 18
 
 echo "🔹 Appium 테스트 실행 중..."
-node appium-test.js
+#node appium-test.js
+node test-runner.js
