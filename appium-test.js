@@ -22,6 +22,7 @@ function saveResultsToFile(results) {
 
 (async () => {
   console.log("🔹 WebdriverIO 모듈 로드 완료!");
+  const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
   // 📌 실행할 테스트 시나리오 정의
   const scenarios = [
@@ -30,6 +31,7 @@ function saveResultsToFile(results) {
       action: async (driver) => {
         const incrementButton = await driver.$("~Increment");
         await incrementButton.click();
+        await sleep(2000); // 📌 버튼 클릭 후 2초 대기
         const counterLabel = await driver.$("~CounterLabel");
         const counterText = await counterLabel.getText();
         return { actual: counterText, expected: "1" };
@@ -40,9 +42,21 @@ function saveResultsToFile(results) {
       action: async (driver) => {
         const initialButton = await driver.$("~Initial");
         await initialButton.click();
+        await sleep(2000); // 📌 버튼 클릭 후 2초 대기
         const counterLabel = await driver.$("~CounterLabel");
         const counterText = await counterLabel.getText();
         return { actual: counterText, expected: "0" };
+      },
+    },
+    {
+      name: "Decrement Button Test",
+      action: async (driver) => {
+        const decrementButton = await driver.$("~Decrement");
+        await decrementButton.click();
+        await sleep(2000); // 📌 버튼 클릭 후 2초 대기
+        const counterLabel = await driver.$("~CounterLabel");
+        const counterText = await counterLabel.getText();
+        return { actual: counterText, expected: "-1" };
       },
     },
     {
@@ -51,6 +65,7 @@ function saveResultsToFile(results) {
         // 📌 의도적으로 실패하는 테스트
         const decrementButton = await driver.$("~Decrement");
         await decrementButton.click();
+        await sleep(2000); // 📌 버튼 클릭 후 2초 대기
         const counterLabel = await driver.$("~CounterLabel");
         const counterText = await counterLabel.getText();
         return { actual: counterText, expected: "1" };
