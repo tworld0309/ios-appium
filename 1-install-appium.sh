@@ -15,6 +15,7 @@ npm install -g appium-doctor
 npm install -g appium-xcuitest-driver
 npm install dotenv
 
+
 # Xcode Command Line Tools 확인
 echo "🔹 Xcode Command Line Tools 확인"
 xcode-select --install || echo "Xcode Command Line Tools가 이미 설치됨"
