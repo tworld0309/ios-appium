@@ -1,0 +1,18 @@
+brew install gitlab-runner
+
+gitlab-runner --version
+
+gitlab-runner register \
+  --url "http://toto.gitlab.com/" \
+  --registration-token "glrt-t1_sZv5K6ohJQDbhTTicyTx" \
+  --executor "shell" \
+  --description "Mac ARM GitLab Runner" \
+  --tag-list "mac,arm64,ios,xcode" \
+  --run-untagged="true" \
+  --locked="false"
+
+  gitlab-runner start
+
+  gitlab-runner status
+
+  gitlab-runner stop
