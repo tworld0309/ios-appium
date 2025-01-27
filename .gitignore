@@ -11,3 +11,4 @@ fastlane
 appium.log
 build.log
 test-results/
+build/
