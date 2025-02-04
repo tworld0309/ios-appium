@@ -67,7 +67,13 @@ platform :ios do
   end
   
   lane :gitlab_appium do |options|
-    app = options[:app] || "CounterApp.app"
+    #app = options[:app] || "CounterApp.app"
+    # ✅ CounterApp.app 위치 확인
+    app_path = File.expand_path("../CounterApp.app") # 현재 디렉토리 기준
+
+    # ✅ Appium 환경 변수로 설정
+    ENV["APP_PATH"] = app_path
+
     device_name = options[:device_name] || "iPhone 16 Pro"
     os_name = options[:os_name] || "18.2"
     platform = options[:platform] || "iOS"
@@ -76,7 +82,7 @@ platform :ios do
 
     # ✅ Appium 테스트 실행 (Node.js 환경에서 실행)
     #sh "bash ../appium/5-test-gitlab-appium.sh #{app} #{device_name} #{os_name} #{platform}"
-    sh "IP_APP='#{app}' IP_PLATFORM='#{platform}' IP_DEVICE_NAME='#{device_name}' IP_OS_NAME='#{os_name}' bash ../appium/5-test-gitlab-appium.sh"
+    sh "IP_APP='#{app_path}' IP_PLATFORM='#{platform}' IP_DEVICE_NAME='#{device_name}' IP_OS_NAME='#{os_name}' bash ../appium/5-test-gitlab-appium.sh"
 
 
     UI.message("✅ Appium tests completed!")
