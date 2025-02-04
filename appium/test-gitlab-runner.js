@@ -2,21 +2,29 @@ const fs = require("fs");
 const path = require("path");
 const { remote } = require("webdriverio");
 const scenarios = require("./appcounter-scenarios.js"); // 테스트 시나리오 가져오기
-const config = require("./appcounter-config.js"); // 환경 설정 가져오기
-//const { IP_PLATFORM, IP_APP, IP_OS, IP_DEVICE_NAME } = require("./config");
 const args = require("minimist")(process.argv.slice(2));
 
-const IP_PLATFORM = args.platform || process.env.IP_PLATFORM || "iOS";
-const IP_DEVICE_NAME =
-  args.device || process.env.IP_DEVICE_NAME || "iPhone 16 Pro";
-const IP_APP = args.app || process.env.IP_APP || "../build/CounterApp.app";
-const IP_OS = args.os || process.env.IP_OS || "18.2";
+const IP_PLATFORM = args.platform;
+const IP_DEVICE_NAME = args.device;
+const IP_APP = args.app;
+const IP_PLATFORM_VERSION = args.platformVersion;
+const IP_APPIUM_HOST = args.appiumHost;
+const IP_APPIUM_PORT = args.appiumPort;
+const IP_AUTOMATION_NAME = args.automationName;
+const IP_MAX_RETRIES = args.maxTries;
 
+console.log("📌📌📌📌📌📌📌📌📌📌📌📌📌📌📌📌📌");
 console.log("📌 Appium Test 시작...");
-console.log(`📌 Platform: ${IP_PLATFORM}`);
-console.log(`📌 Device: ${IP_DEVICE_NAME}`);
-console.log(`📌 App Path: ${IP_APP}`);
-console.log(`📌 OS: ${IP_OS}`);
+console.log(`📌 IP_PLATFORM: ${IP_PLATFORM}`);
+console.log(`📌 IP_DEVICE_NAME: ${IP_DEVICE_NAME}`);
+console.log(`📌 IP_APP: ${IP_APP}`);
+console.log(`📌 IP_PLATFORM_VERSION: ${IP_PLATFORM_VERSION}`);
+
+console.log(`📌 IP_APPIUM_HOST: ${IP_APPIUM_HOST}`);
+console.log(`📌 IP_APPIUM_PORT: ${IP_APPIUM_PORT}`);
+console.log(`📌 IP_AUTOMATION_NAME: ${IP_AUTOMATION_NAME}`);
+console.log(`📌 IP_MAX_RETRIES: ${IP_MAX_RETRIES}`);
+console.log("📌📌📌📌📌📌📌📌📌📌📌📌📌📌📌📌📌");
 
 // 📌 실행 시간 기반으로 결과 파일 이름 생성
 const timestamp = new Date().toISOString().replace(/[:.]/g, "-");
@@ -50,7 +58,9 @@ async function runTests() {
     let retryCount = 0;
     let isTestPassed = false;
 
-    while (retryCount <= config.MAX_RETRIES && !isTestPassed) {
+    console.log("IP_MAX_RETRIES :", IP_MAX_RETRIES);
+
+    while (retryCount <= IP_MAX_RETRIES && !isTestPassed) {
       let result = {
         testName: scenario.name,
         status: "passed",
@@ -73,14 +83,14 @@ async function runTests() {
 
         const driver = await remote({
           path: "/",
-          port: config.APPIUM_PORT,
-          hostname: config.APPIUM_HOST,
+          port: IP_APPIUM_PORT,
+          hostname: IP_APPIUM_HOST,
           capabilities: {
-            platformName: config.PLATFORM_NAME,
-            "appium:platformVersion": IP_OS || config.PLATFORM_VERSION,
-            "appium:deviceName": IP_DEVICE_NAME || config.DEVICE_NAME,
-            "appium:app": IP_APP || config.APP_PATH,
-            "appium:automationName": config.AUTOMATION_NAME,
+            platformName: IP_PLATFORM,
+            "appium:platformVersion": String(IP_PLATFORM_VERSION),
+            "appium:deviceName": IP_DEVICE_NAME,
+            "appium:app": IP_APP,
+            "appium:automationName": IP_AUTOMATION_NAME,
           },
         });
 
@@ -106,11 +116,11 @@ async function runTests() {
         result.errorStack = error.stack || null;
         console.error(`❌ ${scenario.name} 실행 중 오류 발생:`, error.stack);
 
-        if (retryCount < config.MAX_RETRIES) {
+        if (retryCount < IP_MAX_RETRIES) {
           console.log(
-            `🔁 ${scenario.name} 재시도 중... (${retryCount + 1}/${
-              config.MAX_RETRIES
-            })`
+            `🔁 ${scenario.name} 재시도 중... (${
+              retryCount + 1
+            }/${IP_MAX_RETRIES})`
           );
         } else {
           console.log(`🚨 ${scenario.name} 최대 재시도 횟수 초과!`);

@@ -69,22 +69,24 @@ platform :ios do
   lane :gitlab_appium do |options|
     #app = options[:app] || "CounterApp.app"
     # ✅ CounterApp.app 위치 확인
-    app_path = File.expand_path("../CounterApp.app") # 현재 디렉토리 기준
+    app_path = File.expand_path("CounterApp.app") # 현재 디렉토리 기준
 
     # ✅ Appium 환경 변수로 설정
     ENV["APP_PATH"] = app_path
 
     device_name = options[:device_name] || "iPhone 16 Pro"
-    os_name = options[:os_name] || "18.2"
+    platform_version = options[:os_name] || "18.2"
     platform = options[:platform] || "iOS"
-    
+
+    appium_host = "127.0.0.1"
+    appium_port = 4723
+    automation_name = "XCUITest"
+    max_retries = 2
+
     UI.message("🚀 Running Appium tests...")
-    UI.message("✅app_path #{app_path}")
 
     # ✅ Appium 테스트 실행 (Node.js 환경에서 실행)
-    #sh "bash ../appium/5-test-gitlab-appium.sh #{app} #{device_name} #{os_name} #{platform}"
-    sh "IP_APP='#{app_path}' IP_PLATFORM='#{platform}' IP_DEVICE_NAME='#{device_name}' IP_OS_NAME='#{os_name}' bash ../appium/5-test-gitlab-appium.sh"
-
+    sh "IP_APP='#{app_path}' IP_PLATFORM='#{platform}' IP_DEVICE_NAME='#{device_name}' IP_PLATFORM_VERSION='#{platform_version}' IP_APPIUM_HOST='#{appium_host}' IP_APPIUM_PORT='#{appium_port}' IP_AUTOMATION_NAME='#{automation_name}'  IP_MAX_RETRIES='#{max_retries}' bash ../appium/5-test-gitlab-appium.sh"
 
     UI.message("✅ Appium tests completed!")
   end
