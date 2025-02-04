@@ -82,13 +82,12 @@ platform :ios do
     # appium_port = 4723
     # automation_name = "XCUITest"
     # max_retries = 2
-    sh "nvm use v22.12.0" # 확인 필요
 
     UI.message("🚀 Running Appium tests...")
 
     # ✅ Appium 테스트 실행 (Node.js 환경에서 실행)
     #sh "IP_APP='#{app_path}' IP_PLATFORM='#{platform}' IP_DEVICE_NAME='#{device_name}' IP_PLATFORM_VERSION='#{platform_version}' IP_APPIUM_HOST='#{appium_host}' IP_APPIUM_PORT='#{appium_port}' IP_AUTOMATION_NAME='#{automation_name}' IP_MAX_RETRIES='#{max_retries}' bash ../appium/5-test-gitlab-appium.sh"
-    app_path = ENV['IP_APP'] || "default_path.app"
+    app_path = ENV['IP_APP'] || "CounterApp.app"
     platform = ENV['IP_PLATFORM'] || "iOS"
     device_name = ENV['IP_DEVICE_NAME'] || "iPhone 16 Pro"
     platform_version = ENV['IP_PLATFORM_VERSION'] || "18.2"
