@@ -60,10 +60,8 @@ gitlab:appium:
   script:
     - source ~/.bashrc  # ✅ NVM 환경 강제 로드
     - node -v  # ✅ 다시 현재 Node.js 버전 확인 (22가 출력돼야 함)
-    - pwd
-    - ls -al ../
-    - ls -al ../build
-    - mv ../build/CounterApp.app CounterApp.app
+    - cd ..
+    - mv build/CounterApp.app CounterApp.app
 
     # 프로젝트마다 변경 필요
     - export IP_APP="../CounterApp.app"
