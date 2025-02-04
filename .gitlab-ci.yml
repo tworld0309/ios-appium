@@ -47,7 +47,6 @@ build:
 gitlab:appium:
   stage: appium
   before_script:
-  before_script:
     - export NVM_DIR="$HOME/.nvm"
     - source "$NVM_DIR/nvm.sh"
     - nvm install 22
@@ -56,6 +55,8 @@ gitlab:appium:
     - echo "source \"$NVM_DIR/nvm.sh\"" >> ~/.bashrc
     - echo "nvm use 22" >> ~/.bashrc
     - node -v  # ✅ 현재 Node.js 버전 확인
+    - cd appium  # Appium 테스트 디렉토리로 이동
+    - npm install  # ✅ 모듈 설치
   script:
     - source ~/.bashrc  # ✅ NVM 환경 강제 로드
     - node -v  # ✅ 다시 현재 Node.js 버전 확인 (22가 출력돼야 함)
