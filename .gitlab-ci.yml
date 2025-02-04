@@ -20,11 +20,15 @@ build:
   stage: build
   script:
     - fastlane full_pipeline
+  rules:
+    - if: $CI_COMMIT_BRANCH == "main"
+      when: manual
+
   tags: 
     - thj-mac-m1-runner
 
 
-appium:
+local:appium:
   stage: build
   script:
     - fastlane run_appium_tests
@@ -33,3 +37,15 @@ appium:
   tags: 
     - thj-mac-m1-runner
 
+gitlab:appium:
+  stage: build
+  script:
+    - fastlane run_appium_tests
+  needs:
+    - build
+  tags: 
+    - thj-mac-m1-runner
+    - fastlane full_pipeline
+  rules:
+    - if: $CI_COMMIT_BRANCH == "main"
+      when: manual
