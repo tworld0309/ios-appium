@@ -47,11 +47,19 @@ build:
 gitlab:appium:
   stage: appium
   before_script:
+  before_script:
     - export NVM_DIR="$HOME/.nvm"
     - source "$NVM_DIR/nvm.sh"
-    - nvm use 22  # ✅ Node.js 22 버전 사용
-    - node -v      # ✅ 실행되는 Node.js 버전 확인
+    - nvm install 22
+    - nvm use 22
+    - echo "export NVM_DIR=\"$HOME/.nvm\"" >> ~/.bashrc
+    - echo "source \"$NVM_DIR/nvm.sh\"" >> ~/.bashrc
+    - echo "nvm use 22" >> ~/.bashrc
+    - node -v  # ✅ 현재 Node.js 버전 확인
   script:
+    - source ~/.bashrc  # ✅ NVM 환경 강제 로드
+    - node -v  # ✅ 다시 현재 Node.js 버전 확인 (22가 출력돼야 함)
+    
     - mv build/CounterApp.app CounterApp.app
 
     # 프로젝트마다 변경 필요
