@@ -1,0 +1,70 @@
+default_platform(:ios)
+
+platform :ios do
+  desc "Build iOS app without signing"
+  lane :build do
+    # Xcode 빌드 설정
+    gym(
+      scheme: "CounterApp",
+      project: "CounterApp.xcodeproj",
+      output_directory: "./build",
+      output_name: "CounterApp.app",
+      clean: true,
+      sdk: "iphonesimulator",  # ✅ 시뮬레이터 빌드
+      skip_package_ipa: true,  # ✅ IPA 패키징 건너뛰기
+      skip_codesigning: true,  # ✅ 코드 서명 완전 비활성화
+      archive_path: "./build/CounterApp.xcarchive", # 아카이브 저장 경로 변경
+      destination: "generic/platform=iOS Simulator", # ✅ 시뮬레이터 타겟
+      derived_data_path: "./build/DerivedData" # ✅ 빌드 산출물을 특정 디렉토리로 지정
+    )
+  end
+
+  desc "Move CounterApp.app to ./build"
+  lane :move_app do
+    build_dir = "#{Dir.pwd}/../build" # fastlane 폴더 기준으로 한 단계 위의 build 폴더
+    sh "ls -al #{build_dir}"
+    sh "ls -al #{build_dir}/DerivedData/Build/Intermediates.noindex/ArchiveIntermediates/CounterApp/BuildProductsPath/Release-iphonesimulator"
+
+    # ✅ DerivedData에서 .app 찾기
+    app_path = Dir.glob("#{build_dir}/DerivedData/Build/Intermediates.noindex/ArchiveIntermediates/CounterApp/BuildProductsPath/Release-iphonesimulator/CounterApp.app").first
+    UI.message("🔍 Searching app in DerivedData: #{app_path}")
+
+    
+    if app_path && File.exist?(app_path)
+      sh "cp -r #{app_path} ./build/CounterApp.app"
+      UI.message("✅ CounterApp.app has been moved to ./build/")
+    else
+      UI.error("❌ CounterApp.app not found in DerivedData")
+    end
+  end
+
+  # desc "Upload CounterApp.app to S3"
+  # lane :upload_to_s3 do
+  #   s3_bucket = "your-s3-bucket-name" # 👉 여기 S3 버킷 이름 입력
+  #   s3_path = "s3://#{s3_bucket}/CounterApp.app"
+    
+  #   if File.exist?("./build/CounterApp.app")
+  #     sh "aws s3 cp ./build/CounterApp.app #{s3_path}"
+  #     UI.message("✅ CounterApp.app uploaded to S3: #{s3_path}")
+  #   else
+  #     UI.error("❌ CounterApp.app not found in ./build/")
+  #   end
+  # end
+
+  desc "Run Appium tests on iOS Simulator"
+  lane :run_appium_tests do
+    UI.message("🚀 Running Appium tests...")
+
+    # ✅ Appium 테스트 실행 (Node.js 환경에서 실행)
+    sh "../5-test-appium.sh"
+
+    UI.message("✅ Appium tests completed!")
+  end
+
+  desc "Run full build pipeline (Build → Move → Upload)"
+  lane :full_pipeline do
+    build
+    move_app
+    #upload_to_s3
+  end
+end

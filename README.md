@@ -34,10 +34,25 @@ xcrun simctl list device
 ## 로컬에서 Fastlane을 구성하여 앱 빌드, 테스트, 배포를 자동화할 수 있습니다. 아래는 iOS와 Android 앱 각각에 대한 기본 설정 및 실행 방법입니다.
 
 ```
-sudo gem install fastlane
-bundle init
-bundle add fastlane
-bundle exec fastlane --version
+brew install fastlane
 
+fastlane --version
+
+source "https://rubygems.org"
+gem "fastlane"
+
+
+# 프로젝트 루트 폴더에서 실행
 fastlane init
+
+# fastlane 실행
+bundle exec fastlane build
+
+# fastlane/Fastfile
+파일 수정
+
+# local에서 fastlane 빌드
+fastlane build
+
+
 ```
