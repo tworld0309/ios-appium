@@ -7,7 +7,6 @@
 
 node_modules
 fastlane/test_output
-fastlane
 appium.log
 build.log
 test-results/
