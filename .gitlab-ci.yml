@@ -18,8 +18,6 @@ variables:
 
 build:
   stage: build
-  before_script:
-    - export PATH="$HOME/.rbenv/shims:$HOME/.rbenv/bin:$PATH"
   script:
     - bundle full_pipeline
   tags: 
@@ -28,10 +26,10 @@ build:
 
 appium:
   stage: build
-  before_script:
-    - export PATH="$HOME/.rbenv/shims:$HOME/.rbenv/bin:$PATH"
   script:
     - bundle run_appium_tests
+  needs:
+    - build
   tags: 
     - thj-mac-m1-runner
 
