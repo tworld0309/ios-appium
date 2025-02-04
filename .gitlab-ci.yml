@@ -46,6 +46,11 @@ build:
 
 gitlab:appium:
   stage: appium
+  before_script:
+    - export NVM_DIR="$HOME/.nvm"
+    - source "$NVM_DIR/nvm.sh"
+    - nvm use 22  # ✅ Node.js 22 버전 사용
+    - node -v      # ✅ 실행되는 Node.js 버전 확인
   script:
     - mv build/CounterApp.app CounterApp.app
 
@@ -68,4 +73,4 @@ gitlab:appium:
     - thj-mac-m1-runner
   rules:
     - if: $CI_COMMIT_BRANCH == "main"
-      when: manual
+      when: always
