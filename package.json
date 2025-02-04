@@ -3,6 +3,7 @@
     "@wdio/appium-service": "^9.6.1",
     "@wdio/mocha-framework": "^9.5.0",
     "dotenv": "^16.4.7",
+    "minimist": "^1.2.8",
     "webdriverio": "^9.6.1"
   }
 }

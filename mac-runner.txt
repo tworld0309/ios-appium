@@ -3,8 +3,8 @@ brew install gitlab-runner
 gitlab-runner --version
 
 gitlab-runner register \
-  --url "http://toto.gitlab.com/" \
-  --registration-token "glrt-t1_sZv5K6ohJQDbhTTicyTx" \
+  --url "https://git.cj.net" \
+  --registration-token "glrt-t2__3UyH94FeguTsaYkufeq" \
   --executor "shell" \
   --description "Mac ARM GitLab Runner" \
   --tag-list "mac,arm64,ios,xcode" \
@@ -16,3 +16,8 @@ gitlab-runner register \
   gitlab-runner status
 
   gitlab-runner stop
+  
+
+  runner 실행하기
+  GITLAB_DEBUG=1 gitlab-runner run
+  gitlab-runner run

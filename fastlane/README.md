@@ -39,13 +39,21 @@ Build iOS app without signing
 
 Move CounterApp.app to ./build
 
-### ios run_appium_tests
+### ios local_appium
 
 ```sh
-[bundle exec] fastlane ios run_appium_tests
+[bundle exec] fastlane ios local_appium
 ```
 
 Run Appium tests on iOS Simulator
+
+### ios gitlab_appium
+
+```sh
+[bundle exec] fastlane ios gitlab_appium
+```
+
+
 
 ### ios full_pipeline
 

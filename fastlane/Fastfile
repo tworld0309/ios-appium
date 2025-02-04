@@ -57,11 +57,27 @@ platform :ios do
   # end
 
   desc "Run Appium tests on iOS Simulator"
-  lane :run_appium_tests do
+  lane :local_appium do
     UI.message("🚀 Running Appium tests...")
 
     # ✅ Appium 테스트 실행 (Node.js 환경에서 실행)
     sh "bash ../appium/5-test-appium.sh"
+
+    UI.message("✅ Appium tests completed!")
+  end
+  
+  lane :gitlab_appium do |options|
+    app = options[:app] || "CounterApp.app"
+    device_name = options[:device_name] || "iPhone 16 Pro"
+    os_name = options[:os_name] || "18.2"
+    platform = options[:platform] || "iOS"
+    
+    UI.message("🚀 Running Appium tests...")
+
+    # ✅ Appium 테스트 실행 (Node.js 환경에서 실행)
+    #sh "bash ../appium/5-test-gitlab-appium.sh #{app} #{device_name} #{os_name} #{platform}"
+    sh "IP_APP='#{app}' IP_PLATFORM='#{platform}' IP_DEVICE_NAME='#{device_name}' IP_OS_NAME='#{os_name}' bash ../appium/5-test-gitlab-appium.sh"
+
 
     UI.message("✅ Appium tests completed!")
   end
