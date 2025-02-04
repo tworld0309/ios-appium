@@ -1,0 +1,38 @@
+stages:
+  - build
+  - appium
+
+variables:
+  LANG: "en_US.UTF-8"
+  LC_ALL: "en_US.UTF-8"
+  FASTLANE_XCODEBUILD_SETTINGS_TIMEOUT: "120"
+
+.cache:
+  key:
+    files:
+      - Gemfile.lock
+      - Podfile.lock
+  paths:
+    - CJOneNew/Pods
+    - ~/.bundle
+    - ~/.gem
+
+
+build:
+  stage: build
+  before_script:
+    - export PATH="$HOME/.rbenv/shims:$HOME/.rbenv/bin:$PATH"
+  script:
+    - bundle full_pipeline
+  tags: 
+    - mac
+
+appium:
+  stage: build
+  before_script:
+    - export PATH="$HOME/.rbenv/shims:$HOME/.rbenv/bin:$PATH"
+  script:
+    - bundle run_appium_tests
+
+  tags: 
+    - mac
