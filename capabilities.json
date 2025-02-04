@@ -1,0 +1,7 @@
+{
+  "platformName": "iOS",
+  "platformVersion": "18.2",
+  "deviceName": "iPhone 16 Pro",
+  "app": "/Users/totohyojuntak/Library/Developer/Xcode/DerivedData/CounterApp-fqmaeslnbhwyflgnlmccxezzwapo/Build/Products/Debug-iphonesimulator/CounterApp.app",
+  "automationName": "XCUITest"
+}

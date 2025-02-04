@@ -1,0 +1,14 @@
+//
+//  .gitignore
+//  CounterApp
+//
+//  Created by Toto Hyojun Tak on 1/8/25.
+//
+
+node_modules
+fastlane/test_output
+appium.log
+build.log
+test-results/
+build/
+appium.pid
