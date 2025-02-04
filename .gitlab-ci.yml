@@ -35,6 +35,8 @@ build:
 local:appium:
   stage: appium
   script:
+    - pwd
+    - ls -al
     - fastlane local_appium
   needs:
     - build
@@ -44,6 +46,8 @@ local:appium:
 gitlab:appium:
   stage: appium
   script:
+    - pwd
+    - ls -al
     - fastlane gitlab_appium
   needs:
     - job: build

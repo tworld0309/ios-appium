@@ -3,6 +3,20 @@ const path = require("path");
 const { remote } = require("webdriverio");
 const scenarios = require("./appcounter-scenarios.js"); // 테스트 시나리오 가져오기
 const config = require("./appcounter-config.js"); // 환경 설정 가져오기
+//const { IP_PLATFORM, IP_APP, IP_OS, IP_DEVICE_NAME } = require("./config");
+const args = require("minimist")(process.argv.slice(2));
+
+const IP_PLATFORM = args.platform || process.env.IP_PLATFORM || "iOS";
+const IP_DEVICE_NAME =
+  args.device || process.env.IP_DEVICE_NAME || "iPhone 16 Pro";
+const IP_APP = args.app || process.env.IP_APP || "../build/CounterApp.app";
+const IP_OS = args.os || process.env.IP_OS || "18.2";
+
+console.log("📌 Appium Test 시작...");
+console.log(`📌 Platform: ${IP_PLATFORM}`);
+console.log(`📌 Device: ${IP_DEVICE_NAME}`);
+console.log(`📌 App Path: ${IP_APP}`);
+console.log(`📌 OS: ${IP_OS}`);
 
 // 📌 실행 시간 기반으로 결과 파일 이름 생성
 const timestamp = new Date().toISOString().replace(/[:.]/g, "-");
@@ -63,9 +77,9 @@ async function runTests() {
           hostname: config.APPIUM_HOST,
           capabilities: {
             platformName: config.PLATFORM_NAME,
-            "appium:platformVersion": config.PLATFORM_VERSION,
-            "appium:deviceName": config.DEVICE_NAME,
-            "appium:app": config.APP_PATH,
+            "appium:platformVersion": IP_OS || config.PLATFORM_VERSION,
+            "appium:deviceName": IP_DEVICE_NAME || config.DEVICE_NAME,
+            "appium:app": IP_APP || config.APP_PATH,
             "appium:automationName": config.AUTOMATION_NAME,
           },
         });
