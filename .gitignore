@@ -11,4 +11,5 @@ appium.log
 build.log
 test-results/
 build/
+builds/
 appium.pid

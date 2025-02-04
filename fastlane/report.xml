@@ -5,12 +5,12 @@
     
     
       
-      <testcase classname="fastlane.lanes" name="0: default_platform" time="0.000208">
+      <testcase classname="fastlane.lanes" name="0: default_platform" time="0.000226">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="1: IP_APP='CounterApp.app' IP_PLATFORM='iOS' IP_DEVICE_NAME='iPhone 16 Pro' IP_OS_NAME='18.2' bash ../appium/5-test-gitlab-appium.sh" time="6.43964">
+      <testcase classname="fastlane.lanes" name="1: IP_APP='CounterApp.app' IP_PLATFORM='iOS' IP_DEVICE_NAME='iPhone 16 Pro' IP_OS_NAME='18.2' bash ../appium/5-test-gitlab-appium.sh" time="46.844515">
         
       </testcase>
     
