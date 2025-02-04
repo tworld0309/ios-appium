@@ -76,16 +76,20 @@ gitlab:appium:
     - ls -al ../
 
     # loki
+    - cat test-results.log
     - |
       echo "📌 Appium 로그를 Loki로 전송 중..."
+      TIMESTAMP=$(date +%s%N)  # ✅ Unix timestamp in nanoseconds
+      LOG_DATA=$(jq -Rs . < test-results.log)  # ✅ 로그 파일을 JSON 문자열로 변환
+
       curl -X POST "https://loki.devops.cj.net/loki/api/v1/push" \
         -H "Content-Type: application/json" \
-        -d @<(jq -n --arg log "$(cat test-results.log | base64)" '
+        -d @<(jq -n --arg ts "$TIMESTAMP" --arg log "$LOG_DATA" '
           {
             "streams": [
               {
                 "stream": {"app": "appium-test"},
-                "values": [ [(now | todateiso8601), $log] ]
+                "values": [ [$ts, $log] ]
               }
             ]
           }')
