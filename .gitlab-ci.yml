@@ -6,7 +6,6 @@ variables:
   LANG: "en_US.UTF-8"
   LC_ALL: "en_US.UTF-8"
   FASTLANE_XCODEBUILD_SETTINGS_TIMEOUT: "120"
-  GIT_STRATEGY: fetch
 
 .cache:
   key:
