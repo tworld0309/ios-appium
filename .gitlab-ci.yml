@@ -63,7 +63,7 @@ gitlab:appium:
     - pwd
     - ls -al
     - ls -al build/
-    - mv build/CounterApp.app CounterApp.app
+    - mv ../build/CounterApp.app CounterApp.app
 
     # 프로젝트마다 변경 필요
     - export IP_APP="../CounterApp.app"
