@@ -15,13 +15,21 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 
 ## iOS
 
+### ios xcode_build
+
+```sh
+[bundle exec] fastlane ios xcode_build
+```
+
+Build iOS app without signing
+
 ### ios build
 
 ```sh
 [bundle exec] fastlane ios build
 ```
 
-Build iOS app without signing
+
 
 ### ios move_app
 

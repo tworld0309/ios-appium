@@ -5,17 +5,12 @@
     
     
       
-      <testcase classname="fastlane.lanes" name="0: default_platform" time="0.000227">
+      <testcase classname="fastlane.lanes" name="0: default_platform" time="0.000226">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="1: ls -al /Users/hyojuntak/dev/test/ios-appium/fastlane/../build" time="0.007258">
-        
-      </testcase>
-    
-      
-      <testcase classname="fastlane.lanes" name="2: ls -al /Users/hyojuntak/dev/test/ios-appium/fastlane/../build/DerivedData/Build/Intermediates.noindex/ArchiveIntermediates/CounterApp/BuildProductsPath/Release-iphonesimulator" time="0.005943">
+      <testcase classname="fastlane.lanes" name="1: bash ../appium/5-test-appium.sh" time="151.499002">
         
       </testcase>
     

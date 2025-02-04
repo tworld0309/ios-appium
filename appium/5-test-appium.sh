@@ -6,5 +6,5 @@ source "$NVM_DIR/nvm.sh"
 nvm use 18
 
 echo "🔹 Appium 테스트 실행 중..."
-#node appium-test.js
+cd "$(dirname "$0")"  # 현재 스크립트가 위치한 디렉터리로 이동
 node test-runner.js

@@ -2,39 +2,44 @@ default_platform(:ios)
 
 platform :ios do
   desc "Build iOS app without signing"
+  lane :xcode_build do
+    UI.message("🚀 Running xcodebuild for CounterApp...")
+  
+    sh "xcodebuild -project ../CounterApp.xcodeproj -scheme CounterApp -sdk iphonesimulator clean build"
+    UI.message("✅ Build completed!")
+  end
+
   lane :build do
-    # Xcode 빌드 설정
-    gym(
+    increment_build_number(xcodeproj: "CounterApp.xcodeproj")
+
+    build_app(
+      project: "CounterApp.xcodeproj",  # ✅ `workspace` 대신 `project` 사용
       scheme: "CounterApp",
-      project: "CounterApp.xcodeproj",
-      output_directory: "./build",
-      output_name: "CounterApp.app",
       clean: true,
-      sdk: "iphonesimulator",  # ✅ 시뮬레이터 빌드
-      skip_package_ipa: true,  # ✅ IPA 패키징 건너뛰기
-      skip_codesigning: true,  # ✅ 코드 서명 완전 비활성화
-      archive_path: "./build/CounterApp.xcarchive", # 아카이브 저장 경로 변경
-      destination: "generic/platform=iOS Simulator", # ✅ 시뮬레이터 타겟
-      derived_data_path: "./build/DerivedData" # ✅ 빌드 산출물을 특정 디렉토리로 지정
+      output_directory: "./build",
+      sdk: "iphonesimulator",
+      skip_package_ipa: true,
+      skip_codesigning: true,
+      derived_data_path: "./build/DerivedData"
     )
   end
 
   desc "Move CounterApp.app to ./build"
   lane :move_app do
-    build_dir = "#{Dir.pwd}/../build" # fastlane 폴더 기준으로 한 단계 위의 build 폴더
-    sh "ls -al #{build_dir}"
-    sh "ls -al #{build_dir}/DerivedData/Build/Intermediates.noindex/ArchiveIntermediates/CounterApp/BuildProductsPath/Release-iphonesimulator"
-
-    # ✅ DerivedData에서 .app 찾기
-    app_path = Dir.glob("#{build_dir}/DerivedData/Build/Intermediates.noindex/ArchiveIntermediates/CounterApp/BuildProductsPath/Release-iphonesimulator/CounterApp.app").first
-    UI.message("🔍 Searching app in DerivedData: #{app_path}")
-
-    
-    if app_path && File.exist?(app_path)
-      sh "cp -r #{app_path} ./build/CounterApp.app"
-      UI.message("✅ CounterApp.app has been moved to ./build/")
+    derived_data_path = "#{ENV['HOME']}/Library/Developer/Xcode/DerivedData"
+    search_pattern = "#{derived_data_path}/**/Build/Products/Debug-iphonesimulator/CounterApp.app"
+  # cp -r /Users/totohyojuntak/Library/Developer/Xcode/DerivedData/CounterApp-fssklyrojculuceiyuwtsvamanoz/Build/Products/Debug-iphonesimulator/CounterApp.app ./build/CounterApp.app
+    # 📌 최신 수정된 `CounterApp.app` 찾기
+    app_source_path = Dir.glob(search_pattern).max_by { |f| File.mtime(f) }
+    app_target_path = "../build/CounterApp.app"
+  
+    if app_source_path && File.exist?(app_source_path)
+      sh "mkdir -p ../build"
+      sh "cp -r #{app_source_path} #{app_target_path}"
+      UI.message("✅ Moved latest CounterApp.app from #{app_source_path} to #{app_target_path}")
     else
       UI.error("❌ CounterApp.app not found in DerivedData")
+      exit(1)
     end
   end
 
@@ -56,14 +61,14 @@ platform :ios do
     UI.message("🚀 Running Appium tests...")
 
     # ✅ Appium 테스트 실행 (Node.js 환경에서 실행)
-    sh "../5-test-appium.sh"
+    sh "bash ../appium/5-test-appium.sh"
 
     UI.message("✅ Appium tests completed!")
   end
 
   desc "Run full build pipeline (Build → Move → Upload)"
   lane :full_pipeline do
-    build
+    xcode_build
     move_app
     #upload_to_s3
   end

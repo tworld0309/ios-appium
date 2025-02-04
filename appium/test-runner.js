@@ -1,8 +1,8 @@
 const fs = require("fs");
 const path = require("path");
 const { remote } = require("webdriverio");
-const scenarios = require("./appium-test/appcounter-scenarios.js"); // 테스트 시나리오 가져오기
-const config = require("./appium-test/appcounter-config.js"); // 환경 설정 가져오기
+const scenarios = require("./appcounter-scenarios.js"); // 테스트 시나리오 가져오기
+const config = require("./appcounter-config.js"); // 환경 설정 가져오기
 
 // 📌 실행 시간 기반으로 결과 파일 이름 생성
 const timestamp = new Date().toISOString().replace(/[:.]/g, "-");
