@@ -13,10 +13,8 @@ variables:
       - Gemfile.lock
       - Podfile.lock
   paths:
-    - CJOneNew/Pods
     - ~/.bundle
     - ~/.gem
-
 
 build:
   stage: build
@@ -25,7 +23,8 @@ build:
   script:
     - bundle full_pipeline
   tags: 
-    - mac
+    - thj-mac-m1-runner
+
 
 appium:
   stage: build
@@ -33,6 +32,6 @@ appium:
     - export PATH="$HOME/.rbenv/shims:$HOME/.rbenv/bin:$PATH"
   script:
     - bundle run_appium_tests
-
   tags: 
-    - mac
+    - thj-mac-m1-runner
+
