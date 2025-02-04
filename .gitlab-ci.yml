@@ -69,10 +69,25 @@ gitlab:appium:
     - export IP_APPIUM_HOST="127.0.0.1"
     - export IP_APPIUM_PORT="4723"
     - export IP_AUTOMATION_NAME="XCUITest"
-    - export IP_MAX_RETRIES="3"
+    - export IP_MAX_RETRIES="1"
     #
 
     - fastlane gitlab_appium
+
+    # loki
+    - |
+      echo "📌 Appium 로그를 Loki로 전송 중..."
+      curl -X POST "https://loki.devops.cj.net/loki/api/v1/push" \
+        -H "Content-Type: application/json" \
+        -d @<(jq -n --arg log "$(cat test-results.log | base64)" '
+          {
+            "streams": [
+              {
+                "stream": {"app": "appium-test"},
+                "values": [ [(now | todateiso8601), $log] ]
+              }
+            ]
+          }')
   needs:
     - job: build
       artifacts: true # build 단계에서 생성한 아티팩트 사용 (자동 다운로드)
