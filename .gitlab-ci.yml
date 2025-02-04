@@ -1,0 +1,48 @@
+stages:
+  - build
+  - appium
+
+variables:
+  LANG: "en_US.UTF-8"
+  LC_ALL: "en_US.UTF-8"
+  FASTLANE_XCODEBUILD_SETTINGS_TIMEOUT: "120"
+
+.cache:
+  key:
+    files:
+      - Gemfile.lock
+      - Podfile.lock
+  paths:
+    - ~/.bundle
+    - ~/.gem
+
+build:
+  stage: build
+  script:
+    - fastlane full_pipeline
+  rules:
+    - if: $CI_COMMIT_BRANCH == "main"
+      when: manual
+  tags: 
+    - thj-mac-m1-runner
+
+local:appium:
+  stage: appium
+  script:
+    - fastlane run_appium_tests
+  needs:
+    - build
+  tags: 
+    - thj-mac-m1-runner
+
+gitlab:appium:
+  stage: appium
+  script:
+    - fastlane run_appium_tests
+  needs:
+    - build
+  tags: 
+    - thj-mac-m1-runner
+  rules:
+    - if: $CI_COMMIT_BRANCH == "main"
+      when: manual
