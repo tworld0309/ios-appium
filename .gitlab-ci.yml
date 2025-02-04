@@ -20,6 +20,10 @@ build:
   stage: build
   script:
     - fastlane full_pipeline
+  artifacts:
+    paths:
+      - "CounterApp.app"   # 배포할 WAR 파일 저장
+    expire_in: 10 minutes
   rules:
     - if: $CI_COMMIT_BRANCH == "main"
       when: manual
@@ -40,7 +44,8 @@ gitlab:appium:
   script:
     - fastlane run_appium_tests
   needs:
-    - build
+    - job: build
+      artifacts: true  # build 단계에서 생성한 아티팩트 사용 (자동 다운로드)
   tags: 
     - thj-mac-m1-runner
   rules:
