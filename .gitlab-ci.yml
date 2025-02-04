@@ -27,7 +27,7 @@ build:
     - thj-mac-m1-runner
 
 local:appium:
-  stage: build
+  stage: appium
   script:
     - fastlane run_appium_tests
   needs:
@@ -36,7 +36,7 @@ local:appium:
     - thj-mac-m1-runner
 
 gitlab:appium:
-  stage: build
+  stage: appium
   script:
     - fastlane run_appium_tests
   needs:
