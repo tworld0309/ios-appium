@@ -47,8 +47,18 @@ gitlab:appium:
   stage: appium
   script:
     - mv build/CounterApp.app CounterApp.app
-    - pwd
-    - ls -al
+
+    # 프로젝트마다 변경 필요
+    - export IP_APP="../CounterApp.app"
+    - export IP_PLATFORM="iOS"
+    - export IP_DEVICE_NAME="iPhone 16 Pro"
+    - export IP_PLATFORM_VERSION="18.2"
+    - export IP_APPIUM_HOST="127.0.0.1"
+    - export IP_APPIUM_PORT="4723"
+    - export IP_AUTOMATION_NAME="XCUITest"
+    - export IP_MAX_RETRIES="3"
+    #
+
     - fastlane gitlab_appium
   needs:
     - job: build

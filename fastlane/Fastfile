@@ -86,8 +86,18 @@ platform :ios do
     UI.message("🚀 Running Appium tests...")
 
     # ✅ Appium 테스트 실행 (Node.js 환경에서 실행)
+    #sh "IP_APP='#{app_path}' IP_PLATFORM='#{platform}' IP_DEVICE_NAME='#{device_name}' IP_PLATFORM_VERSION='#{platform_version}' IP_APPIUM_HOST='#{appium_host}' IP_APPIUM_PORT='#{appium_port}' IP_AUTOMATION_NAME='#{automation_name}' IP_MAX_RETRIES='#{max_retries}' bash ../appium/5-test-gitlab-appium.sh"
+    app_path = ENV['IP_APP'] || "default_path.app"
+    platform = ENV['IP_PLATFORM'] || "iOS"
+    device_name = ENV['IP_DEVICE_NAME'] || "iPhone 16 Pro"
+    platform_version = ENV['IP_PLATFORM_VERSION'] || "18.2"
+    appium_host = ENV['IP_APPIUM_HOST'] || "127.0.0.1"
+    appium_port = ENV['IP_APPIUM_PORT'] || "4723"
+    automation_name = ENV['IP_AUTOMATION_NAME'] || "XCUITest"
+    max_retries = ENV['IP_MAX_RETRIES'] || "3"
+  
     sh "IP_APP='#{app_path}' IP_PLATFORM='#{platform}' IP_DEVICE_NAME='#{device_name}' IP_PLATFORM_VERSION='#{platform_version}' IP_APPIUM_HOST='#{appium_host}' IP_APPIUM_PORT='#{appium_port}' IP_AUTOMATION_NAME='#{automation_name}' IP_MAX_RETRIES='#{max_retries}' bash ../appium/5-test-gitlab-appium.sh"
-
+  
     UI.message("✅ Appium tests completed!")
   end
 
