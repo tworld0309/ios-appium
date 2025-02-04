@@ -73,6 +73,8 @@ gitlab:appium:
     #
 
     - fastlane gitlab_appium
+    - ls -al ../appium
+    - ls -al ../build
 
     # loki
     - |
