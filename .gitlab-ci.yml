@@ -19,7 +19,7 @@ variables:
 build:
   stage: build
   script:
-    - bundle full_pipeline
+    - fastlane full_pipeline
   tags: 
     - thj-mac-m1-runner
 
@@ -27,7 +27,7 @@ build:
 appium:
   stage: build
   script:
-    - bundle run_appium_tests
+    - fastlane run_appium_tests
   needs:
     - build
   tags: 
