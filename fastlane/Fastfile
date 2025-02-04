@@ -67,21 +67,22 @@ platform :ios do
   end
   
   lane :gitlab_appium do |options|
-    #app = options[:app] || "CounterApp.app"
-    # ✅ CounterApp.app 위치 확인
-    app_path = File.expand_path("../CounterApp.app") # 현재 디렉토리 기준
+    # #app = options[:app] || "CounterApp.app"
+    # # ✅ CounterApp.app 위치 확인
+    # app_path = File.expand_path("../CounterApp.app") # 현재 디렉토리 기준
 
-    # ✅ Appium 환경 변수로 설정
-    ENV["APP_PATH"] = app_path
+    # # ✅ Appium 환경 변수로 설정
+    # ENV["APP_PATH"] = app_path
 
-    device_name = options[:device_name] || "iPhone 16 Pro"
-    platform_version = options[:os_name] || "18.2"
-    platform = options[:platform] || "iOS"
+    # device_name = options[:device_name] || "iPhone 16 Pro"
+    # platform_version = options[:os_name] || "18.2"
+    # platform = options[:platform] || "iOS"
 
-    appium_host = "127.0.0.1"
-    appium_port = 4723
-    automation_name = "XCUITest"
-    max_retries = 2
+    # appium_host = "127.0.0.1"
+    # appium_port = 4723
+    # automation_name = "XCUITest"
+    # max_retries = 2
+    sh "nvm use v22.12.0" # 확인 필요
 
     UI.message("🚀 Running Appium tests...")
 
