@@ -60,10 +60,9 @@ gitlab:appium:
     - source ~/.bashrc  # ✅ NVM 환경 강제 로드
     - node -v  # ✅ 다시 현재 Node.js 버전 확인 (22가 출력돼야 함)
     - cd ..
-    - mv build/CounterApp.app CounterApp.app
 
     # 프로젝트마다 변경 필요
-    - export IP_APP="./CounterApp.app"
+    - export IP_APP="build/CounterApp.app"
     - export IP_PLATFORM="iOS"
     - export IP_DEVICE_NAME="iPhone 16 Pro"
     - export IP_PLATFORM_VERSION="18.2"
