@@ -32,7 +32,7 @@ build:
   tags:
     - thj-mac-m1-runner
 
-local:appium:
+.local:appium:
   stage: appium
   script:
     - pwd

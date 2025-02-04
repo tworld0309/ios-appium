@@ -79,6 +79,7 @@ platform :ios do
     platform = options[:platform] || "iOS"
     
     UI.message("🚀 Running Appium tests...")
+    UI.message("✅app_path #{app_path}")
 
     # ✅ Appium 테스트 실행 (Node.js 환경에서 실행)
     #sh "bash ../appium/5-test-gitlab-appium.sh #{app} #{device_name} #{os_name} #{platform}"
