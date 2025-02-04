@@ -18,4 +18,4 @@ cd "$(dirname "$0")"  # 현재 스크립트가 위치한 디렉터리로 이동
 # echo "📌 IP_AUTOMATION_NAME: $IP_AUTOMATION_NAME"
 # echo "📌 IP_MAX_RETRIES: $IP_MAX_RETRIES"
 
-node test-gitlab-runner.js --platform "$IP_PLATFORM" --device "$IP_DEVICE_NAME" --app "$IP_APP" --platformVersion "$IP_PLATFORM_VERSION" --appiumHost "$IP_APPIUM_HOST"  --appiumPort "$IP_APPIUM_PORT"  --automationName "$IP_AUTOMATION_NAME"  --maxTries "$IP_MAX_RETRIES" 2>&1 | tee test-results.log
+node test-gitlab-runner.js --platform "$IP_PLATFORM" --device "$IP_DEVICE_NAME" --app "$IP_APP" --platformVersion "$IP_PLATFORM_VERSION" --appiumHost "$IP_APPIUM_HOST"  --appiumPort "$IP_APPIUM_PORT"  --automationName "$IP_AUTOMATION_NAME"  --maxTries "$IP_MAX_RETRIES" 2>&1 | tee ../test-results.log
