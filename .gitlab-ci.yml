@@ -24,7 +24,7 @@ build:
     - ls -al
   artifacts:
     paths:
-      - "CounterApp.app" # 배포할 WAR 파일 저장
+      - "build/CounterApp.app"
     expire_in: 10 minutes
   rules:
     - if: $CI_COMMIT_BRANCH == "main"
