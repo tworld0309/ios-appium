@@ -20,6 +20,8 @@ build:
   stage: build
   script:
     - fastlane full_pipeline
+    - pwd
+    - ls -al
   artifacts:
     paths:
       - "CounterApp.app"   # 배포할 WAR 파일 저장
