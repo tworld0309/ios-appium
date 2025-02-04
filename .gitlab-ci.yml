@@ -46,6 +46,7 @@ local:appium:
 gitlab:appium:
   stage: appium
   script:
+    - mv build/CounterApp.app CounterApp.app
     - pwd
     - ls -al
     - fastlane gitlab_appium
