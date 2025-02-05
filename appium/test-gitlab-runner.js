@@ -78,6 +78,7 @@ async function runTests() {
       try {
         console.log(`🔹 ${scenario.name} 실행 중... (재시도: ${retryCount})`);
         console.log("🔹 Appium 서버에 연결 시도...");
+        console.log(`### TEST-COUNT ###`);
 
         const startTime = Date.now();
 
@@ -103,9 +104,10 @@ async function runTests() {
 
         console.log(`✅ Expected '${expected}' but got '${actual}'`);
         if (actual !== expected) {
+          console.log(`### FAIL-TEST ###`);
           throw new Error(`Expected '${expected}' but got '${actual}'`);
         }
-
+        console.log(`### PASS-TEST ###`);
         await driver.deleteSession();
         console.log(`✅ ${scenario.name} 완료!`);
         isTestPassed = true;
